@@ -12,11 +12,11 @@ if (x != 0 and y == 0) or (y != 0 and x == 0):
     print("Вы находитесь на оси координат")
 elif x > 0 and y > 0:
     print("1 четверть")
-elif x > 0 and y < 0:
+elif x < 0 and y > 0:
     print("2 четверть")
 elif x < 0 and y < 0:
     print("3 четверть")
-elif x < 0 and y > 0:
+elif x > 0 and y < 0:
     print("4 четверть")
 else:
     print("Вы находитесь в точке начала координат X и Y")
