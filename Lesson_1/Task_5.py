@@ -4,3 +4,12 @@
 
 # - A (3,6); B (2,1) -> 5,09
 # - A (7,-5); B (1,-1) -> 7,21
+import math
+
+print("Впишите координаты точки А (X,Y): ")
+xA, yA = int(input()), int(input())
+print("Впишите координаты точки B (X,Y): ")
+xB, yB = int(input()), int(input())
+
+distance = math.sqrt((xA - xB)**2 + (yA - yB)**2)
+print("Расстояние между двумя точками равен: ", distance)
