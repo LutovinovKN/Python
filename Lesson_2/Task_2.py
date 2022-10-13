@@ -6,8 +6,15 @@
 
 from math import factorial
 
-
-n = int(input('Введите число n: '))
+while True:
+    try:
+        n = int(input("Enter number n: "))       
+    except ValueError:
+        print("Not an integer!")
+        continue
+    else:
+        print("Yes an integer!")
+        break 
 
 list_n = []
 total = 1
