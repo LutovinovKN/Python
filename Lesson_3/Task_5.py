@@ -1,10 +1,10 @@
 #     Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
 #*     Пример:
 #*      для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
-
+from math import *
 while True:
     try:
-        n = int(input('with what number do you want to view the Fibonacci Sequence? Enter a number: '))       
+        n = abs(int(input('with what number do you want to view the Fibonacci Sequence? Enter a number: ')))       
     except ValueError:
         print("Not an integer number!")
         continue
