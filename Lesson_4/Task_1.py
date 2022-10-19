@@ -9,14 +9,14 @@
 from decimal import Decimal
 from math import *
 from unicodedata import decimal
-# d = input('Введите число в пределах от 0.1 до 0.0000000001: ')
-while True:
-        try:
-            d = abs(Decimal(input('Введите число в пределах от 0.1 до 0.0000000001: ')))
-            break 
-        except ValueError:
-            print("Not an float number!")
-            continue
+d = input('Введите число в пределах от 0.1 до 0.0000000001: ')
+# while True:
+#         try:
+#             d = abs(Decimal(input('Введите число в пределах от 0.1 до 0.0000000001: ')))
+#             break 
+#         except ValueError:
+#             print("Not an float number!")
+#             continue
 
 num_pi = asin(sqrt(1 - 1**2))+ abs(asin(1)) * 2
 print(num_pi)
