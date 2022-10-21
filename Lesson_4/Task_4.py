@@ -6,3 +6,26 @@
 #    Пример:
 #?   k=2 -> 2x² + 4x + 5 = 0 или x² + 5 = 0 или 10x² = 0
 #?   k=5 -> 3x⁵ + 5x⁴ - 6x³ - 3x = 0
+
+from random import randint
+# индексы unicode
+indexes = { 0: "\u2070",
+            1: "\u00B9",
+            2: "\u00B2",
+            3: "\u00B3",
+            4: "\u2074",
+            5: "\u2075",
+            6: "\u2076",
+            7: "\u2077",
+            8: "\u2078",
+            9: "\u2079"
+        }
+
+n = input("Введите число необходимой степени дискриминанта: ")
+lst = [indexes[int(i)] for i in n]
+degree = ''.join(lst)
+a = randint(-1, 1)
+print("y = ", str(a) + "X" + degree)
+
+for i in range(int(n), -1):
+    
