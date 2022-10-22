@@ -8,3 +8,7 @@
 #   Результат:
 #?  40x⁹ - x⁸ -5x⁷ + 15x⁶ +5x⁴ + 5x³ + x² - 13x¹ + 53 = 0 40x9
 
+import random
+
+test = ['+', '-']
+print(random.choice(test))
