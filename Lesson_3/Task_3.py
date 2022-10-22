@@ -18,5 +18,5 @@ for i in range(5):
     if (round(num - int(num), 2)) == 0:
         continue
     num_list.append(round(num - int(num), 2))
-# print(num_list)
+print(num_list)
 print(f'Разница между максимальной и минимальной дробной частью равна: {round(max(num_list) - min(num_list), 2)}')
