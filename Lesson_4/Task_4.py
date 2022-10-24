@@ -42,6 +42,9 @@ for i in range(int(n), 0, -1):
         if i == 1:
             equation.append(str(a) + "X")
             equation.append('' + rnd_sign + '')
+        elif i == n:
+            equation.append(rnd_sign + str(a) + "X" + degree)
+            equation.append('' + rnd_sign + '')
         else:
             equation.append(str(a) + "X" + degree)
             equation.append('' + rnd_sign + '')
