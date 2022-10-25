@@ -101,11 +101,11 @@ final_equation = []
 for i in range(len(tuple_of_equation1)):
     for j in range(len(tuple_of_equation2)):
         if tuple_of_equation1[i][-1] == tuple_of_equation2[j][-1]:
-            tuple_of_equation2[j] = (str(int(tuple_of_equation1[i][0]) + int(tuple_of_equation2[j][0])), tuple_of_equation1[i][-2], tuple_of_equation1[i][-1])
+            tuple_of_equation2[j] = \
+            (str(int(tuple_of_equation1[i][0]) + int(tuple_of_equation2[j][0])), tuple_of_equation1[i][-2], tuple_of_equation1[i][-1])
             break
     else:
         tuple_of_equation2.append(tuple_of_equation1[i])
-
 
 for i in range(len(tuple_of_equation2)):
     tuple_of_equation2[i] = list(tuple_of_equation2[i])
@@ -114,14 +114,11 @@ for i in range(len(tuple_of_equation2)):
 
 tuple_of_equation2 = sorted(tuple_of_equation2, key=lambda x: int(''.join(unicode_in_int[i] for i in x[-1])), reverse=True) 
 
-
-
 res = ''
 for i in range(len(tuple_of_equation2)):
     if tuple_of_equation2[i][-1] == '¹' or tuple_of_equation2[i][-1] == '⁰':
-        tuple_of_equation2[i][-1] = ''             
+        tuple_of_equation2[i][-1] = ''
     res += ''.join(tuple_of_equation2[i]) + "+"
-
 
 res = res.replace('+-', '-')[:-1] + ' = 0'
 
