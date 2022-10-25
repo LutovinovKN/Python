@@ -31,16 +31,17 @@ unicode_in_int = {  "": "",
                     "⁹": "9"
                 }
 
-# path = '/home/sideshow/GeekBrains/Семинар/Python/Lesson_4/equation_5_1.txt'
-# f = open(path, "r")
-equation_5_1 = '23x⁹ - 16x⁸ + 3x⁷ + 15x⁴ - 2x³ + x² + 20 = 0'
-# print(equation_5_1)
-# f.close()
-# path = '/home/sideshow/GeekBrains/Семинар/Python/Lesson_4/equation_5_2.txt'
-# f = open(path, "r")
-equation_5_2 = '17x⁹ + 15x⁸ - 8x⁷ + 15x⁶ - 10x⁴ + 7x³ - 13x¹ + 33 = 0'
-# print(equation_5_2)
-# f.close()
+path = '/home/sideshow/GeekBrains/Семинар/Python/Lesson_4/equation_5_1.txt'
+f = open(path, "r")
+equation_5_1 = f.read()
+print(equation_5_1)
+f.close()
+
+path = '/home/sideshow/GeekBrains/Семинар/Python/Lesson_4/equation_5_2.txt'
+f = open(path, "r")
+equation_5_2 = f.read()
+print(equation_5_2)
+f.close()
 
 print()
 
@@ -96,7 +97,7 @@ print()
 #?  Максимальная степень равна:
 find_max_degree = max_degree(tuple_of_equation1, tuple_of_equation2)
 # print(type(find_max_degree))
-
+final_equation = []
 for i in range(len(tuple_of_equation1)):
     for j in range(len(tuple_of_equation2)):
         if tuple_of_equation1[i][-1] == tuple_of_equation2[j][-1]:
@@ -105,29 +106,23 @@ for i in range(len(tuple_of_equation1)):
     else:
         tuple_of_equation2.append(tuple_of_equation1[i])
 
-tuple_of_equation2 = sorted(tuple_of_equation2, key=lambda x: unicode_in_int[x[-1]], reverse=True)    
 
-# print(tuple_of_equation2)
+for i in range(len(tuple_of_equation2)):
+    tuple_of_equation2[i] = list(tuple_of_equation2[i])
+    if tuple_of_equation2[i][-1] == '':
+        tuple_of_equation2[i][-1] = "⁰"
+
+tuple_of_equation2 = sorted(tuple_of_equation2, key=lambda x: int(''.join(unicode_in_int[i] for i in x[-1])), reverse=True) 
+
+
 
 res = ''
 for i in range(len(tuple_of_equation2)):
-    tuple_of_equation2[i] = list(tuple_of_equation2[i])
-    if tuple_of_equation2[i][-1] == '¹':
-        tuple_of_equation2[i][-1] = ''
+    if tuple_of_equation2[i][-1] == '¹' or tuple_of_equation2[i][-1] == '⁰':
+        tuple_of_equation2[i][-1] = ''             
     res += ''.join(tuple_of_equation2[i]) + "+"
-    
 
-res = res.replace("+-", "-")[:-1] + " = 0"
+
+res = res.replace('+-', '-')[:-1] + ' = 0'
+
 print(res)
-
-
-#?  40x⁹ - x⁸ -5x⁷ + 15x⁶ +5x⁴ + 5x³ + x² - 13x¹ + 53 = 0
-# Создать новый кортеж
-# Дальше сравнивать степени [i][-1]
-
-# Если степени нет, но есть "х", то суммируем, если есть только в одном списке пишем его
-# Если степени и "х" нет, то пишем просто число
-# перевести кортеж в список
-
-# в конце добавить " = 0"
-# print(*новый список)
