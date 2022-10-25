@@ -49,3 +49,42 @@
 #     if abv[i].find('абв'):
 #         a = abv.pop(i)
 # print(abv)
+# unicode_in_int = {  "²": 178 - 176,
+#                     "³": 3,
+#                     "⁴": 4,
+#                     "⁵": 5,
+#                     "⁶": 6,
+#                     "⁷": 7,
+#                     "⁸": 8,
+#                     "⁹": 9
+#                 }
+# print(unicode_in_int["²"])
+# index_in_int = {"²": '2',
+#     "³": '3',
+#     "⁴": '4',
+#     "⁵": '5',
+#     "⁶": '6',
+#     "⁷": '7',
+#     "⁸": '8',
+#     "⁹": '9'
+#     }
+
+# line = '²³'
+# res = ''
+
+# for i in line:
+#     if i in index_in_int.keys():
+#         res += index_in_int[i]
+#     else:
+#         res += i
+
+# print(res)
+# B = "²"
+# a = ord(B)
+
+# c = chr(a)
+# print(unicode_in_int["²"])
+t = ('275', '54000', '0.0', '5000.0', '0.0')
+lst = list(t)
+lst[0] = '300'
+t = tuple(lst)
