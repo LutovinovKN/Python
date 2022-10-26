@@ -9,8 +9,5 @@ def del_some_words(text, find_word):
 proposal_str = input('Введите текст, который хотите проверить: \n').lower()
 find_str = input("Введите набор символов, которые нарушают правильное написание слова и мы удалим эти слова: \n").lower()
 
-my_text = 'Напишите абв напиабв програбвмму программу, удаляющую из \
-    этого абв текста все вабвс слова, содерабващие содержащие "абв"'
-
 my_text = del_some_words(proposal_str, find_str)
 out_yellow(my_text)
