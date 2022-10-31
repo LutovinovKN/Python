@@ -60,7 +60,7 @@ def check_line(sum_O,sum_X):
     return step
 
 # выбор хода бота
-def AI():        
+def bot():        
 
     step = ""
 
@@ -96,13 +96,28 @@ while not game_over:
 
     # 2. Спросим у играющего куда делать ход
     if human == True:
-        symbol = "X"
-        step = int(input(f"{player}, ваш ход: "))
+        valid = False
+        while not valid:
+            symbol = "X"
+            step = int(input(f"{player}, ваш ход: "))
+            try:
+                step = int(step)
+            except:
+                print ("Некорректный ввод. Вы уверены, что ввели число?")
+                continue
+            if 1 <= step <= 9:
+                if (str(field[step-1]) not in "XO"):
+                    field[step-1] = step
+                    valid = True
+                else:
+                    print ("Эта клетка уже занята, попробуйте ввести число ещё раз")
+            else:
+                print ("Некорректный ввод. Введите число от 1 до 9 чтобы походить.")
 
     else:
         print("21-Bot делает ход: ")
         symbol = "O"
-        step = AI()
+        step = bot()
 
     # 3. Если компьютер нашел куда сделать ход, то играем. Если нет, то ничья.
     if step != "":
