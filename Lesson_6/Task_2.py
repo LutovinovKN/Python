@@ -3,7 +3,6 @@
 #*      [2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ: 12
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-sum_num = 0
-for i in range(1, len(numbers), 2):
-    sum_num += numbers[i]
-print(sum_num)
+
+new_list = list(filter(lambda x: (x%2 != 0) , numbers))
+print(sum(new_list))
