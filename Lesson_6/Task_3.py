@@ -21,12 +21,20 @@ for i in range(n):
     numbers.append(tmp)
 print(numbers)
 
-def composition(numbers):
-    half_list = ceil(n / 2)
-    return [numbers[i] * numbers[-(i+1)] for i in range(half_list)]
-# data = [i for i in range(ceil(n/2))]
-composition_num = list(map(composition, numbers))
+composition_num = list(map(lambda i: numbers[i] * numbers[-(i+1)], range(ceil(n/2))))
 
+# версия 2
+# def composition(i):
+#     return numbers[i] * numbers[-(i+1)]
+# composition_num = list(map(composition, range(ceil(n/2))))
+
+# версия 3
+# def composition(numbers):
+#     half_list = ceil(n / 2)
+#     return [numbers[i] * numbers[-(i+1)] for i in range(half_list)]
+# composition_num = list(composition(numbers))
+
+# Версия 4
 # composition_num = []
 # half_list = ceil(n / 2)
 # for i in range(half_list):
