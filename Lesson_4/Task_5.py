@@ -32,17 +32,13 @@ unicode_in_int = {  "": "",
                 }
 
 path = '/home/sideshow/GeekBrains/Семинар/Python/Lesson_4/equation_5_1.txt'
-f = open(path, "r")
-equation_5_1 = f.read()
-print(equation_5_1)
-f.close()
-
+with open(path, "r") as f:
+    equation_5_1 = f.read()
+    print(equation_5_1)
 path = '/home/sideshow/GeekBrains/Семинар/Python/Lesson_4/equation_5_2.txt'
-f = open(path, "r")
-equation_5_2 = f.read()
-print(equation_5_2)
-f.close()
-
+with open(path, "r") as f:
+    equation_5_2 = f.read()
+    print(equation_5_2)
 print()
 
 #?  убираем пробелы, а также "= 0"
@@ -59,34 +55,19 @@ new_equation_5_2 = split_list(equation_5_2)
 
 def tuple_equation(n_equation): # разбиваем на элементы (-27х⁹ => ('-27', 'x', '⁹'))
     equation = {}
-    equation_tuple = []
-    for i in range(len(n_equation)):
-        equation_tuple.append(n_equation[i].partition('x'))            
+    equation_tuple = [n_equation[i].partition('x') for i in range(len(n_equation))]
     print(equation_tuple)       #! перед отправкой не забыть закомментировать
     return equation_tuple
 print()
 
 #?  Находим максимальную степень
 def max_degree(first_tuple, second_tuple):
-    res1 = ''
-    for i in first_tuple[0][-1]:
-        if i in unicode_in_int.keys():
-            res1 += unicode_in_int[i]
-        else:
-            res1 += i
+    res1 = ''.join(unicode_in_int[i] if i in unicode_in_int.keys() else i for i in first_tuple[0][-1])
 
-    res2 = ''
-    for i in second_tuple[0][-1]:
-        if i in unicode_in_int.keys():
-            res2 += unicode_in_int[i]
-        else:
-            res2 += i
+    res2 = ''.join(unicode_in_int[i] if i in unicode_in_int.keys() else i for i in second_tuple[0][-1])
+
     res=0
-    if int(res1) >= int(res2):
-        res = res1    
-    else:
-        res = res2
-
+    res = res1 if int(res1) >= int(res2) else res2
     print("Максивальная степень равна:", int(res))
     return int(res)
 
@@ -116,7 +97,7 @@ tuple_of_equation2 = sorted(tuple_of_equation2, key=lambda x: int(''.join(unicod
 
 res = ''
 for i in range(len(tuple_of_equation2)):
-    if tuple_of_equation2[i][-1] == '¹' or tuple_of_equation2[i][-1] == '⁰':
+    if tuple_of_equation2[i][-1] in ['¹', '⁰']:
         tuple_of_equation2[i][-1] = ''
     res += ''.join(tuple_of_equation2[i]) + "+"
 
