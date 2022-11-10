@@ -21,9 +21,15 @@ for i in range(n):
     numbers.append(tmp)
 print(numbers)
 
-composition_num = []
-half_list = ceil(n / 2)
-for i in range(half_list):
-    composition_num.append(numbers[i] * numbers[-(i+1)])
+def composition(numbers):
+    half_list = ceil(n / 2)
+    return [numbers[i] * numbers[-(i+1)] for i in range(half_list)]
+# data = [i for i in range(ceil(n/2))]
+composition_num = list(map(composition, numbers))
+
+# composition_num = []
+# half_list = ceil(n / 2)
+# for i in range(half_list):
+#     composition_num.append(numbers[i] * numbers[-(i+1)])
     
 print("Произведением пар чисел списка numbers, является следующий список: ", composition_num)
