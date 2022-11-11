@@ -46,18 +46,16 @@ print()
 #?  разбиваем по "+" строку и вносим данные в элементы списка
 def split_list(n_equation):
     tmp = n_equation.replace(" ", "")[:-2]
-    result = tmp.replace("-", "+-").split("+")
-    print(result)       #! перед отправкой не забыть закомментировать
-    return result
+    # print(result)       #! перед отправкой не забыть закомментировать
+    return tmp.replace("-", "+-").split("+")
 
 new_equation_5_1 = split_list(equation_5_1) 
 new_equation_5_2 = split_list(equation_5_2) 
 
 def tuple_equation(n_equation): # разбиваем на элементы (-27х⁹ => ('-27', 'x', '⁹'))
     equation = {}
-    equation_tuple = [n_equation[i].partition('x') for i in range(len(n_equation))]
-    print(equation_tuple)       #! перед отправкой не забыть закомментировать
-    return equation_tuple
+    # print(equation_tuple)       #! перед отправкой не забыть закомментировать
+    return [n_equation[i].partition('x') for i in range(len(n_equation))]
 print()
 
 #?  Находим максимальную степень
