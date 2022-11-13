@@ -25,3 +25,21 @@ def inputInt(text):
                   return number
             except:
                   print('Ошибка! Введите целое число!')
+
+
+def inputStr(text):
+      while True:
+            try:
+                  string = input(text)
+                  return string
+            except:
+                  print('Ошибка! Введите слово!')
+
+
+def showContacts(phone_book, textError):
+      print()
+      if not phone_book == []:
+            for index, contact in enumerate(phone_book):
+                  print(index, *contact)
+      else:
+            print(textError)
