@@ -1,5 +1,19 @@
-from sqlalchemy.ext.asyncio import session
-import view
+from Python.Seminar7 import view
+
+
+class People:
+
+    def __init__(self, name):
+        self._name = name
+
+    def getName(self):
+        return self._name
+
+
+    def setName(self, name):
+        self._name = name
+
+
 
 class CLI_PhoneBook():
 
@@ -61,6 +75,8 @@ class CLI_PhoneBook():
                       f'2 - в JSON\n'
                       f'3 - в SQLite\n'
                       f'0 - ВЕРНУТЬСЯ НАЗАД\n')
+
+
 
 
 
