@@ -32,16 +32,21 @@ def start():
                 return False
 
 def openFile():
+    pass
 
 def saveFile():
+    pass
 
 def showAll():
-
+    pass
 def findContact():
-
+    pass
 def addContact():
+    pass
 
 def changeContact():
+    pass
 
 def deleteContact():
+    pass
     
