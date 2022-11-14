@@ -19,9 +19,23 @@ class PhoneBook(Base):
     city_id = Column('City', ForeignKey('city.id'))
 
     def __repr__(self):
-        return f'ФАМИЛИЯ {self.last_name.upper()}, ' \
-               f'Имя {self.first_name}, ' \
-               f'личный телефон {self.phone_person}'
+        return  f'ФАМИЛИЯ {self.last_name.upper()}, ' \
+                f'Имя {self.first_name}, ' \
+                f'личный телефон {self.phone_person}'
+
+
+    # Dict = {
+    #     "id" : None,
+    #     "first_name" : None,
+    #     "last_name" : None,
+    #     "patronymic" : None,
+    #     "birthday" : None,
+    #     "phone_person" : None,
+    #     "phone_work" : None,
+    #     "email" : None,
+    #     "group" : None,
+    #     "city_id" : None,
+    #     }
 
 
 class city(Base):
