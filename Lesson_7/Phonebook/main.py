@@ -1,10 +1,8 @@
 import controller
 
-controller.start()
-
-from controller import get_controller
 def main():
-    None
+    controller.start_program()
+
 
 if __name__ == "__main__":
     main()

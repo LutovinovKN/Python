@@ -17,8 +17,6 @@ def run():
                 while runing_choise_show_contact:
                     view.show_contact_menu()
                     choise_show_contact_menu = view.get_input("Выберите позицию: ")
-                
-                
                     match choise_show_contact_menu:
                         case '1':
                             id_contact = view.get_input("Введите id контакта: ")
@@ -57,10 +55,28 @@ def run():
                         case '3':
                             model.change_field("number")
                         case '4':
-                            model.change_field("number+")
+                            model.change_field("number_plus")
             case '3':
                 None
             case 'exit':
                 running = False
 
-
+def get_contact() -> dict:
+    name = input('Введите имя: ')
+    while not name:
+        name = input('Имя обязательно для ввода: ')
+    surname = input('Введите фамилию: ')
+    number = input('Введите телефон: ')
+    while not numbers:
+        numbers = input('Без номера телефона никак: ')
+    while number_plus:
+        reply = input('Введите еще один номер (для выхода введите "н"): ')
+        while not reply:
+            reply = input('Вы ничего не ввели. Введите номер телефона (для выхода введите "н"): ')
+        if reply.lower() == 'н':
+            number_plus = False
+        else:
+            number_plus += f';{reply}'
+    columns = [name, surname, number, number_plus]
+    contact = {}
+    
