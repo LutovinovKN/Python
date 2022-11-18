@@ -10,12 +10,12 @@ def menu():
     print(  '''\nГлавное меню:
             1 - Открыть список контактов
             2 - Добавить контакт
-            3 - Удалить весь список контактов
+            3 - Удалить контакт
             exit - Выход'''
         )
 
-def show_contact_list():
-    None
+# def show_contact_list():
+#     None
 #     choise_contact_list = view.contact("выберите позицию")
     
 #     match choise_contact_list:
@@ -26,12 +26,12 @@ def show_contact_list():
 #         case '3':
 #             view.back()
 
-def show_contact_menu():
-    print('''\nСписок контактов
-            1 - Выбрать контакт
-            2 - Поиск контакта
-            back - Назад'''
-        )
+# def show_contact_menu():
+#     print('''\nСписок контактов
+#             1 - Выбрать контакт
+#             2 - Поиск контакта
+#             back - Назад'''
+#         )
 
 
 # def contact():
@@ -42,20 +42,15 @@ def show_contact_menu():
 #         )
 
 
-def contact_data_entry_menu():
-    print('''\nКорректировка контакта{name_contact}
-            1 - Добавить имя
-            2 - Добавить фамилию
-            3 - Добавить номер телефона
-            4 - Добавить рабочий номер телефона
-            9 - Удалить контакт
-            back - Назад'''
-        )
-
-
-
-
-# def contact_find():
-#     print('\nПоиск контакта\n'
-#             '1. Введите имя'
+# def contact_data_entry_menu():
+#     print('''\nКорректировка контакта{name_contact}
+#             1 - Добавить имя
+#             2 - Добавить фамилию
+#             3 - Добавить номер телефона
+#             4 - Добавить рабочий номер телефона
+#             9 - Удалить контакт
+#             back - Назад'''
 #         )
+
+
+
