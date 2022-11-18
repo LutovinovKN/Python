@@ -42,20 +42,7 @@ def run():
                 # view.choise_contact() # Выбор контакта
                 # view.find_contact()
             case '2':
-                view.contact_add_menu() # Показывает меню создания контакта
-                runing_add_contact = True
-                while runing_add_contact:
-                    choise_add_contact = view.get_input("Выберите позицию: ")
-                    
-                    match choise_add_contact:
-                        case '1':
-                            model.change_field("name")
-                        case '2':
-                            model.change_field("surname")
-                        case '3':
-                            model.change_field("number")
-                        case '4':
-                            model.change_field("number_plus")
+                contact = get_contact()
             case '3':
                 None
             case 'exit':
@@ -66,17 +53,23 @@ def get_contact() -> dict:
     while not name:
         name = input('Имя обязательно для ввода: ')
     surname = input('Введите фамилию: ')
-    number = input('Введите телефон: ')
-    while not numbers:
-        numbers = input('Без номера телефона никак: ')
-    while number_plus:
+    birthdate = input('Введите дату рождения: ')
+    work = input('Введите место работы: ')
+    more_phones = True
+    phones = input('Введите телефон: ')
+    while not phones:
+        phones = input('Введите хотя бы один номер телефона: ')
+    while more_phones:
         reply = input('Введите еще один номер (для выхода введите "н"): ')
         while not reply:
             reply = input('Вы ничего не ввели. Введите номер телефона (для выхода введите "н"): ')
         if reply.lower() == 'н':
-            number_plus = False
+            more_phones = False
         else:
-            number_plus += f';{reply}'
-    columns = [name, surname, number, number_plus]
+            phones += f';{reply}'
+    columns = [name, surname, birthdate, work, phones]
     contact = {}
+    for i in range(len(columns)):
+        contact[model.column_names[i]] = columns[i] if columns[i] else '-'
+    return contact
     

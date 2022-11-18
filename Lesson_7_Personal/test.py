@@ -1,21 +1,37 @@
-from tkinter import *
-from tkinter import ttk
+import csv
 
-import tkinter as tk
+column_names = ['name', 'surname', 'birthdate', 'employer', 'phones']
 
-class App(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.pack()
+def get_phonebook() -> list:
+    try:
+        with open('phonebook.csv', 'r', encoding='UTF8') as f:
+            reader = csv.reader(f)
+            return sorted(list(reader), key=lambda x: (x[1] + x[2] + x[3]).lower())
+    except FileNotFoundError:
+        return []
 
-# create the application
-myapp = App()
+def get_contact() -> dict:
+    name = input('Введите имя: ')
+    while not name:
+        name = input('Имя обязательно для ввода: ')
+    surname = input('Введите фамилию: ')
+    birthdate = input('Введите дату рождения: ')
+    work = input('Введите место работы: ')
+    more_phones = True
+    phones = input('Введите телефон: ')
+    while not phones:
+        phones = input('Введите хотя бы один номер телефона: ')
+    while more_phones:
+        reply = input('Введите еще один номер (для выхода введите "н"): ')
+        while not reply:
+            reply = input('Вы ничего не ввели. Введите номер телефона (для выхода введите "н"): ')
+        if reply.lower() == 'н':
+            more_phones = False
+        else:
+            phones += f';{reply}'
+    columns = [name, surname, birthdate, work, phones]
+    contact = {}
+    for i in range(len(columns)):
+        contact[column_names[i]] = columns[i] if columns[i] else '-'
+    return contact
 
-#
-# here are method calls to the window manager class
-#
-myapp.master.title("My Do-Nothing Application")
-myapp.master.maxsize(1000, 400)
-
-# start the program
-myapp.mainloop()
