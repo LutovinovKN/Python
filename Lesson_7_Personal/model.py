@@ -1,8 +1,10 @@
 import json
 from pprint import pprint
 
+import view
 
-def get_contact():
+
+def get_new_contact():
     contact = {}    # Создаём словарь
     # Назначаем поля
     fields = [
@@ -11,19 +13,20 @@ def get_contact():
             ]
 
     for field in fields:    # Перебираем каждое поле в списке "поля", начиная с нулевого ключ = введите ключ
-        contact[field[0]] = input(f'Введите {field[1]}: ').capitalize()
+        contact[field[0]] = view.get_input(f'Введите {field[1]}: ') #.capitalize()
 
-    additional_phone = input('Введите дополнительный телефон (пустой ввод, чтобы отказаться): ')
+    additional_phone = view.get_input('Введите дополнительный телефон (пустой ввод, чтобы отказаться): ')
 
     while additional_phone: # Пока вписываем дополнительные номера, добавляем к уже существующим
         contact['phones'] += ';' + additional_phone
-        additional_phone = input('Введите дополнительный телефон (пустой ввод, чтобы отказаться): ')
+        additional_phone = view.get_input('Введите дополнительный телефон (пустой ввод, чтобы отказаться): ')
 
     # print(contact)
     try:    # Метод исключения, в файл записывается только список 
         with open('contacts.json', 'r') as file: # Открываем и читаем contacts.json
             contacts = json.load(file)
     except Exception:
+        print('Список пуст')
         contacts = []
 
     contacts.append(contact) # Добавляем контакт в список контактов
@@ -35,6 +38,7 @@ def get_contact():
 
 
 def get_all_contact():
+    view.contact_list()
     try:
         with open('contacts.json', 'r', encoding='utf-8') as f: #открыли файл
             text = json.load(f) #загнали все из файла в переменную
@@ -51,7 +55,7 @@ def get_del_contact():
             text = json.load(f) #загнали все из файла в переменную
         for count, i in enumerate(text, start=1): #создали цикл, который будет работать построчно
             print(count, i['name'], '\t|', i['surname'], '\t|', i['phones'], '\t|', i['b-day'], '\t|', i['work'])
-        id_contact = int(input("Введите id контакта, который хотите удалить: "))
+        id_contact = int(view.get_input("Введите id контакта, который хотите удалить: "))
         for count, i in enumerate(text, start=1):
             if count == id_contact:
                 text.pop(count - 1)
@@ -60,7 +64,22 @@ def get_del_contact():
     except Exception:
             print('Список пуст')
 
+# ####################################
+def get_find_contact():
+    try:
+        with open('contacts.json', 'r', encoding='utf-8') as f: #открыли файл
+            text = json.load(f) #загнали все из файла в переменную
+        for count, i in enumerate(text, start=1): #создали цикл, который будет работать построчно
+            print(count, i['name'], '\t|', i['surname'], '\t|', i['phones'], '\t|', i['b-day'], '\t|', i['work'])
+        find_word = view.get_input("введите имя или фамилию контакта: ")
 
+        result = [z for z in text if z["name"] == find_word or z["surname"] == find_word]
 
+        if not result:
+            print(f"В справочнике нет контакта {find_word}")
+        else:
+            print(result)
+    except Exception:
+            print('Список пуст')
 
 

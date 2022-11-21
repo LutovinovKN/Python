@@ -3,7 +3,7 @@ def show_info(input_value):
 
 
 def get_input(output_value):
-    return input(output_value).lower()
+    return input(output_value) #.lower()
 
 
 def menu():
@@ -14,6 +14,8 @@ def menu():
             exit - Выход'''
         )
 
+def contact_list():
+    print("Список контактов:")
 # def show_contact_list():
 #     None
 #     choise_contact_list = view.contact("выберите позицию")
@@ -26,12 +28,12 @@ def menu():
 #         case '3':
 #             view.back()
 
-# def show_contact_menu():
-#     print('''\nСписок контактов
-#             1 - Выбрать контакт
-#             2 - Поиск контакта
-#             back - Назад'''
-#         )
+def show_change_and_search_menu():
+    print('''\nВыберите позицию:
+            1 - Изменить контакт
+            2 - Поиск контакта
+            back - Назад'''
+        )
 
 
 # def contact():

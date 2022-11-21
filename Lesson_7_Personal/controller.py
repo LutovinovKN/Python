@@ -9,10 +9,23 @@ def run():
     while running:
         view.menu()
         choise_menu = view.get_input("Выберите позицию: ")
-        
+        print()
         match choise_menu:
             case '1':
                 all_contact = model.get_all_contact()
+                view.show_change_and_search_menu()
+                runing_change_and_found = True
+                while runing_change_and_found:
+                    choise_menu = view.get_input("Выберите позицию: ")
+                    match choise_menu:
+                        
+                        case "1":
+                            pass
+                        case "2":
+                            find_contact = model.get_find_contact()
+                        case "back":
+                            runing_change_and_found = False
+                    
             #     view.show_contact_list() # Показыает список контактов
             #     runing_choise_show_contact = True
             #     while runing_choise_show_contact:
@@ -43,7 +56,7 @@ def run():
                 # view.choise_contact() # Выбор контакта
                 # view.find_contact()
             case '2':
-                contact = model.get_contact()
+                contact = model.get_new_contact()
             case '3':
                 del_contact = model.get_del_contact()
             case 'exit':

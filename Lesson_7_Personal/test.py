@@ -1,14 +1,39 @@
-import json
-try:
-    with open('contacts.json', 'r', encoding='utf-8') as f: #открыли файл
-        text = json.load(f) #загнали все из файла в переменную
-    for count, i in enumerate(text, start=1): #создали цикл, который будет работать построчно
-        print(count, i['name'], '\t|', i['surname'], '\t|', i['phones'], '\t|', i['b-day'], '\t|', i['work'])
-    id_contact = int(input("Введите id контакта, который хотите удалить: "))
-    for count, i in enumerate(text, start=1):
-        if count == id_contact:
-            text.pop(count - 1)
-    with open('contacts.json', 'w') as file: # Записывает в contacts.json или создаём его если нет
-                json.dump(text, file, indent=2, ensure_ascii=False)
-except Exception:
-        print('Список пуст')
+test = [
+    {
+    "name": "Константин",
+    "surname": "Лутовинов",
+    "phones": "89515063050",
+    "b-day": "14.07.1991",
+    "work": "Рниирс"
+    },
+    {
+    "name": "Елена",
+    "surname": "Лутовинова",
+    "phones": "89516034582",
+    "b-day": "28.11.1991",
+    "work": "1forma"
+    },
+    {
+    "name": "Иван",
+    "surname": "Иванов",
+    "phones": "89516088582",
+    "b-day": "28.11.1991",
+    "work": "1forma"
+    },
+    {
+    "name": "Иван",
+    "surname": "Лутовинов",
+    "phones": "89516034582",
+    "b-day": "19.03.1989",
+    "work": "1forma"
+    }
+]
+
+find_word = input("введите слово: ")
+
+result = [z for z in test if z["name"] == find_word or z["surname"] == find_word]
+
+if not result:
+    print("нет контакта")
+else:
+    print(result)
