@@ -16,43 +16,29 @@ def menu():
 
 def contact_list():
     print("Список контактов:")
-# def show_contact_list():
-#     None
-#     choise_contact_list = view.contact("выберите позицию")
-    
-#     match choise_contact_list:
-#         case '1':
-#             view.contact()
-#         case '2':
-#             view.contact_find()
-#         case '3':
-#             view.back()
+
 
 def show_change_and_search_menu():
-    print('''\nВыберите позицию:
+    print(
+            '''
+            Выберите позицию:
             1 - Изменить контакт
             2 - Поиск контакта
-            back - Назад'''
+            back - Назад
+            '''
         )
 
 
-# def contact():
-#     print(  '\n{name_contact}\n'
-#             '1. Изменить контакт'
-#             '2. Удалить контакт'
-#             '3. Назад'
-#         )
-
-
-# def contact_data_entry_menu():
-#     print('''\nКорректировка контакта{name_contact}
-#             1 - Добавить имя
-#             2 - Добавить фамилию
-#             3 - Добавить номер телефона
-#             4 - Добавить рабочий номер телефона
-#             9 - Удалить контакт
-#             back - Назад'''
-#         )
-
-
-
+def show_chenge_contact():
+    print(
+            '''
+            1 - Изменить имя
+            2 - Изменить фамилию
+            3 - Изменить номер телефона
+            4 - Изменить день рождения
+            5 - Изменить место работы
+            6 - Изменить/добавить университет
+            7 - Изменить/добавить школу
+            back - Назад
+            '''
+        )

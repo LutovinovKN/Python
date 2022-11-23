@@ -13,18 +13,36 @@ def run():
         match choise_menu:
             case '1':
                 all_contact = model.get_all_contact()
-                view.show_change_and_search_menu()
-                runing_change_and_found = True
-                while runing_change_and_found:
+                view.show_change_and_search_menu() #? Показывает меню изменения и поиска контакта
+                running_change_and_found = True
+                while running_change_and_found:
                     choise_menu = view.get_input("Выберите позицию: ")
+                    print()
                     match choise_menu:
-                        
                         case "1":
-                            pass
+                            chenge_contact = model.get_chenge_contact()
+                            running_chenge_contact = True
+                            while running_chenge_contact:
+                                view.show_chenge_contact() #? Показывает меню изменения контакта и добавления новых колонок
+                                print()
+                                choise_menu = view.get_input("Выберите позицию: ")
+                                match choise_menu:
+                                    case '1':
+                                        model.get_update_name(id_contact=chenge_contact)
+                                    case '2':
+                                        model.get_update_surname()
+                                    case '3':
+                                        model.get_update_bday()
+                                    case '4':
+                                        model.get_update_work()
+                                    case '5':
+                                        model.get_update_university()
+                                    case '6':
+                                        model.get_update_school()
                         case "2":
                             find_contact = model.get_find_contact()
                         case "back":
-                            runing_change_and_found = False
+                            running_change_and_found = False
                     
             #     view.show_contact_list() # Показыает список контактов
             #     runing_choise_show_contact = True

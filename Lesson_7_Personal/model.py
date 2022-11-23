@@ -3,7 +3,7 @@ from pprint import pprint
 
 import view
 
-
+#? ####################################
 def get_new_contact():
     contact = {}    # Создаём словарь
     # Назначаем поля
@@ -26,7 +26,7 @@ def get_new_contact():
         with open('contacts.json', 'r') as file: # Открываем и читаем contacts.json
             contacts = json.load(file)
     except Exception:
-        print('Список пуст')
+        print('Список отсутствует')
         contacts = []
 
     contacts.append(contact) # Добавляем контакт в список контактов
@@ -37,6 +37,7 @@ def get_new_contact():
     # print(contacts)
 
 
+#? ####################################
 def get_all_contact():
     view.contact_list()
     try:
@@ -45,10 +46,11 @@ def get_all_contact():
         for count, i in enumerate(text, start=1): #создали цикл, который будет работать построчно
             print(count, i['name'], '\t|', i['surname'], '\t|', i['phones'], '\t|', i['b-day'], '\t|', i['work'])
     except Exception:
-        print('Список пуст')
+        print('Список отсутствует')
         
 
 
+#? ####################################
 def get_del_contact():
     try:
         with open('contacts.json', 'r', encoding='utf-8') as f: #открыли файл
@@ -62,9 +64,10 @@ def get_del_contact():
         with open('contacts.json', 'w') as file: # Записывает в contacts.json или создаём его если нет
                     json.dump(text, file, indent=2, ensure_ascii=False)
     except Exception:
-            print('Список пуст')
+            print('Список отсутствует')
 
-# ####################################
+
+#? ####################################
 def get_find_contact():
     try:
         with open('contacts.json', 'r', encoding='utf-8') as f: #открыли файл
@@ -72,14 +75,56 @@ def get_find_contact():
         for count, i in enumerate(text, start=1): #создали цикл, который будет работать построчно
             print(count, i['name'], '\t|', i['surname'], '\t|', i['phones'], '\t|', i['b-day'], '\t|', i['work'])
         find_word = view.get_input("введите имя или фамилию контакта: ")
-
+        print()
         result = [z for z in text if z["name"] == find_word or z["surname"] == find_word]
+        for count, i in enumerate(result, start=1): #создали цикл, который будет работать построчно
+            print(count, i['name'], '\t|', i['surname'], '\t|', i['phones'], '\t|', i['b-day'], '\t|', i['work'])
 
         if not result:
             print(f"В справочнике нет контакта {find_word}")
-        else:
-            print(result)
+        # else:
+        #     print(result)
     except Exception:
-            print('Список пуст')
+            print('Данный id отсутствует')
 
 
+#? ####################################
+def get_chenge_contact():
+    try:
+        with open('contacts.json', 'r', encoding='utf-8') as f: #открыли файл
+            text = json.load(f) #загнали все из файла в переменную
+        for count, i in enumerate(text, start=1): #создали цикл, который будет работать построчно
+            print(count, i['name'], '\t|', i['surname'], '\t|', i['phones'], '\t|', i['b-day'], '\t|', i['work'])
+        id_contact = int(view.get_input("Введите id контакта, который хотите изменить: "))
+        for count, i in enumerate(text, start=1):
+            if count == id_contact:
+                text[count - 1] #! Это изменить под коректировку контакта
+        # with open('contacts.json', 'w') as file: # Записывает в contacts.json или создаём его если нет
+        #             json.dump(text, file, indent=2, ensure_ascii=False)
+    except Exception:
+            print('Список отсутствует')
+
+
+#? ####################################
+def get_update_name(id_contact):
+    id_contact.update({'name': view.get_input("Введите имя: ")})
+
+
+def get_update_surname(id_contact):
+    id_contact.update({'surname': view.get_input("Введите фамилию: ")})
+
+
+def get_update_bday(id_contact):
+    id_contact.update({'b-day': view.get_input("Введите дату рождения: ")})
+
+
+def get_update_work(id_contact):
+    id_contact.update({'work': view.get_input("Введите место работы: ")})
+
+
+def get_update_university(id_contact):
+    id_contact.update({'university': view.get_input("Введите университет: ")})
+
+
+def get_update_school(id_contact):
+    id_contact.update({'school': view.get_input("Введите школу: ")})
