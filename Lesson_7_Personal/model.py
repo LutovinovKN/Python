@@ -1,6 +1,4 @@
 import json
-from pprint import pprint
-
 import view
 
 #? ####################################
@@ -41,7 +39,9 @@ def get_all_contact():
         with open('contacts.json', 'r', encoding='utf-8') as f: #открыли файл
             text = json.load(f) #загнали все из файла в переменную
         for count, i in enumerate(text, start=1): #создали цикл, который будет работать построчно
-            print(count, i['name'], '\t|', i['surname'], '\t|', i['phones'], '\t|', i['b-day'], '\t|', i['work'])
+            # count_symbols = max(len(i.values))
+            # print('%-7s %5d %8.1f' % ('First', 483, 1.1)) 
+            print(count, '\t|'.join(list(i.values())))
         return text
     except Exception as erorr:
         print('Список отсутствует')
