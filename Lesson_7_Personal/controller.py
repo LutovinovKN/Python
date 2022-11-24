@@ -12,7 +12,7 @@ def run():
         print()
         match choise_menu:
             case '1':
-                all_contact = model.get_all_contact()
+                all_contacts = model.get_all_contact()
                 view.show_change_and_search_menu() #? Показывает меню изменения и поиска контакта
                 running_change_and_found = True
                 while running_change_and_found:
@@ -20,7 +20,7 @@ def run():
                     print()
                     match choise_menu:
                         case "1":
-                            chenge_contact = model.get_chenge_contact()
+                            chenge_contact = model.get_chenge_contact(all_contacts)
                             running_chenge_contact = True
                             while running_chenge_contact:
                                 view.show_chenge_contact() #? Показывает меню изменения контакта и добавления новых колонок
@@ -28,51 +28,26 @@ def run():
                                 choise_menu = view.get_input("Выберите позицию: ")
                                 match choise_menu:
                                     case '1':
-                                        model.get_update_name(id_contact=chenge_contact)
+                                        model.get_update_name(chenge_contact)
                                     case '2':
-                                        model.get_update_surname()
+                                        model.get_update_surname(chenge_contact)
                                     case '3':
-                                        model.get_update_bday()
+                                        model.get_update_phone(chenge_contact)
                                     case '4':
-                                        model.get_update_work()
+                                        model.get_update_bday(chenge_contact)
+                                    case '4':
+                                        model.get_update_work(chenge_contact)
                                     case '5':
-                                        model.get_update_university()
+                                        model.get_update_university(chenge_contact)
                                     case '6':
-                                        model.get_update_school()
+                                        model.get_update_school(chenge_contact)
+                                    case 'back':
+                                        running_chenge_contact = False
+                                model.save(all_contacts)
                         case "2":
                             find_contact = model.get_find_contact()
                         case "back":
                             running_change_and_found = False
-                    
-            #     view.show_contact_list() # Показыает список контактов
-            #     runing_choise_show_contact = True
-            #     while runing_choise_show_contact:
-            #         view.show_contact_menu()
-            #         choise_show_contact_menu = view.get_input("Выберите позицию: ")
-            #         match choise_show_contact_menu:
-            #             case '1':
-            #                 id_contact = view.get_input("Введите id контакта: ")
-                            
-            #                 view.contact_data_entry_menu()
-            #                 choise_contact_data_entry_menu = view.get_input("Выберите позицию: ")
-                        # case 'back':
-                            # runing_choise_show_contact = False
-                            # match choise_contact_data_entry_menu:
-                            #     case '1':
-                            #         model.change_field("name")
-                            #     case '2':
-                            #         model.change_field("surname")
-                            #     case '3':
-                            #         model.change_field("number")
-                            #     case '4':
-                            #         model.change_field("number+")
-                            #     case '9':
-                            #         model.del_contact
-                            #     case 'back':
-                            #         runing_choise_show_contact = False
-                        
-                # view.choise_contact() # Выбор контакта
-                # view.find_contact()
             case '2':
                 contact = model.get_new_contact()
             case '3':
