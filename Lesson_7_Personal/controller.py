@@ -35,11 +35,11 @@ def run():
                                         model.get_update_phone(chenge_contact)
                                     case '4':
                                         model.get_update_bday(chenge_contact)
-                                    case '4':
-                                        model.get_update_work(chenge_contact)
                                     case '5':
-                                        model.get_update_university(chenge_contact)
+                                        model.get_update_work(chenge_contact)
                                     case '6':
+                                        model.get_update_university(chenge_contact)
+                                    case '7':
                                         model.get_update_school(chenge_contact)
                                     case 'back':
                                         running_chenge_contact = False
