@@ -1,5 +1,6 @@
 import json
 import view
+import logger
 
 #? ####################################
 def get_new_contact():
